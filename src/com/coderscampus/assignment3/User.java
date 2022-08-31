@@ -3,7 +3,7 @@ package com.coderscampus.assignment3;
 public class User {
 
 	public String toString() {
-		return "UserInfo [username=" + username + ", password =" + password + ", name=" + name + "]";
+		return "UserInfo [username =  " + username + ", password = " + password + ", name = " + name + "]";
 	}
 
 	public User(String username, String password, String name) {
