@@ -10,82 +10,82 @@ import java.util.Scanner;
 
 public class UserLoginApplication {
 
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		// Creates an array and adds 5 indexes into it
-		User[] userArray = new User[5];
-		try (Scanner scan = new Scanner(System.in)) {
-			BufferedReader fileReader = null;
-
-
-			// our try block for the the file reader
-			try {
-				fileReader = new BufferedReader(new FileReader("data.txt"));
+        // Creates an array and adds 5 indexes into it
+        User[] userArray = new User[5];
+        try (Scanner scan = new Scanner(System.in)) {
+            BufferedReader fileReader = null;
 
 
-				String line;
-				int i = 0;
+            // our try block for the the file reader
+            try {
+                fileReader = new BufferedReader(new FileReader("data.txt"));
 
-				// assigned line to the file reader
-				while ((line = fileReader.readLine()) != null) {
 
-					// Create a user data Array and take our file reader  we called line and add the split method so we can add ,
-					String[] userData = line.split(",");
+                String line;
+                int i = 0;
 
-					// create a userInfo and add 3 sections of data we had in our user class (username,password,name)
-					User userInfo = new User(userData[0], userData[1], userData[2]);
-					//create a userArray and assing it to the user info
-					userArray[i] = userInfo;
-					i++;
-					System.out.println(userInfo);
-				}
+                // assigned line to the file reader
+                while ((line = fileReader.readLine()) != null) {
 
-			} finally {
+                    // Create a user data Array and take our file reader  we called line and add the split method so we can add ,
+                    String[] userData = line.split(",");
 
-				fileReader.close();
+                    // create a userInfo and add 3 sections of data we had in our user class (username,password,name)
+                    User userInfo = new User(userData[0], userData[1], userData[2]);
+                    //create a userArray and assing it to the user info
+                    userArray[i] = userInfo;
+                    i++;
+                    System.out.println(userInfo);
+                }
 
-			}
+            } finally {
 
-			boolean loginSuccessful = false;
+                fileReader.close();
 
-			int failedAttempts = 0;
+            }
 
-			while (loginSuccessful == false) {
+            boolean loginSuccessful = false;
 
-				while (true) {
-					failedAttempts++;
-					System.out.println("Enter your email");
-					String username = scan.nextLine();
-					System.out.println("Enter your password");
-					String password = scan.nextLine();
+            int failedAttempts = 6;
 
-					for (User loginInfo : userArray) {
+            while (loginSuccessful == false) {
 
-						if (loginInfo.getUsername().equalsIgnoreCase(username)
-								&& loginInfo.getPassword().equals(password)) {
-							System.out.println("Welcome: " + loginInfo.getName());
-							loginSuccessful = true;
-							break;
-						} else if (!loginInfo.getUsername().equalsIgnoreCase(username)
-								|| !loginInfo.getPassword().equals(password)) {
+                while (true) {
+                    failedAttempts--;
+                    System.out.println("Enter your email");
+                    String username = scan.nextLine();
+                    System.out.println("Enter your password");
+                    String password = scan.nextLine();
 
-							loginSuccessful = false;
+                    for (User loginInfo : userArray) {
 
-						}
-						if (failedAttempts == 4) {
-							System.out.println("Too many failed login attempts, you are now locked out.");
-							loginSuccessful = true;
-							break;
-						}
-					}
-					if (loginSuccessful == true) {
-						break;
-					} else {
-						System.out.println("Invalid login, please try again");
+                        if (loginInfo.getUsername().equalsIgnoreCase(username)
+                                && loginInfo.getPassword().equals(password)) {
+                            System.out.println("Welcome: " + loginInfo.getName());
+                            loginSuccessful = true;
+                            break;
+                        } else if (!loginInfo.getUsername().equalsIgnoreCase(username)
+                                || !loginInfo.getPassword().equals(password)) {
 
-					}
-				}
-			}
-		}
-	}
+                            loginSuccessful = false;
+
+                        }
+                        if (failedAttempts == 0) {
+                            System.out.println("Too many failed login attempts, you are now locked out.");
+                            loginSuccessful = true;
+                            break;
+                        }
+                    }
+                    if (loginSuccessful == true) {
+                        break;
+                    } else {
+                        System.out.println("Invalid login, please try again you have " + failedAttempts + " attempts remaining");
+
+                    }
+                }
+            }
+        }
+    }
 }

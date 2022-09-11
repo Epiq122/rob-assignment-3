@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="063a94d0-67ca-4a87-bf1a-65c31b2d2142" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/coderscampus/assignment3/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coderscampus/assignment3/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/coderscampus/assignment3/UserLoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coderscampus/assignment3/UserLoginApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
