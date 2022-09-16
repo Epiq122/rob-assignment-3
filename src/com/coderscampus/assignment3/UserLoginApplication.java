@@ -48,7 +48,7 @@ public class UserLoginApplication {
 
             boolean loginSuccessful = false;
 
-            int failedAttempts = 6;
+            int failedAttempts = 5;
 
             while (loginSuccessful == false) {
 
